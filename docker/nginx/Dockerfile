@@ -3,12 +3,12 @@ FROM node:20.0.0 as node-build
 COPY ./src /application
 WORKDIR /application
 RUN apt-get update \
-  && npm install \
-  && npm run prod
+  && npm i \
+  && npm run build
 
 
 # 実行環境
-FROM nginx:1.19.2
+FROM nginx:1.23.4
 WORKDIR /application
 RUN apt-get update
 COPY ./docker/nginx/ecs/conf.d/default.conf /etc/nginx/conf.d/default.conf

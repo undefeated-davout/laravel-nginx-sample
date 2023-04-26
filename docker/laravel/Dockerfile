@@ -1,4 +1,4 @@
-FROM php:7.4-fpm as build-composer
+FROM php:8.1.18-fpm as build-composer
 WORKDIR /application
 RUN apt-get update && apt-get install -y \
   git \
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
   && mv composer.phar /usr/local/bin/composer
 
 
-FROM php:7.4-fpm
+FROM php:8.1.18-fpm
 COPY ./src /application
 WORKDIR /application
 COPY --from=build-composer /usr/local/bin/composer /usr/local/bin/composer
