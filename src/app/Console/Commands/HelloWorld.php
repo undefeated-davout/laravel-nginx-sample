@@ -11,7 +11,7 @@ class HelloWorld extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'print:helloworld';
 
     /**
      * The console command description.
@@ -37,6 +37,7 @@ class HelloWorld extends Command
      */
     public function handle()
     {
+        $this->line('Hello', config('app.word'));
         return 0;
     }
 }
